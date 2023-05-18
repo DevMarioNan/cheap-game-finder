@@ -11,11 +11,11 @@ const HomePage = () => {
                 <source src={videoUrl} type="video/mp4" />
             </video>    
             <div className="fixed top-0 left-0 z-[-1] bg-black w-full h-full opacity-50"></div>
-            <div className="text-white font-[Montserrat] flex flex-col justify-center items-center gap-3">
+            <div className="text-white  flex flex-col justify-center items-center gap-3">
                 <h1 className="text-2xl "> Welcome to</h1>
                 <h1 className="text-8xl">Cheap Game Finder</h1>
                 <Link className="flex gap-4 items-center" to="/store">
-                    <h1 className="text-3xl">Go to store</h1>
+                    <h1 className="text-3xl">Go to deals</h1>
                     <FaArrowCircleRight className="text-3xl" />
                 </Link>
             </div>
