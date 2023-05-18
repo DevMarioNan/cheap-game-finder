@@ -1,26 +1,25 @@
 import {useState,useEffect} from 'react'
 import axios from 'axios'
+import GameCard from './GameCard';
 
 const Store = () => {
 
     const [games,setGames] = useState([])
     const [store,setStore] = useState(["1"]);
-    const [sort,setSort] = useState(["Deal Rating"])
+    const [sort,setSort] = useState(["Recent"])
     const [loading,setLoading] = useState(true)
     useEffect(() => {
         axios.get(`https://www.cheapshark.com/api/1.0/deals?storeID=${store}&sortBy=${sort}`)
         .then(res => {
             setGames(res.data)
-            console.log(res.data);
             setLoading(false)
         })
         .catch(err => console.log(err))
     },[store,sort])
-    if(loading) return <div>Loading...</div>
 
     return (
         <div className='min-h-screen min-w-full bg-black text-white'>
-            <div className='flex flex-col justify-center items-center gap-3 pt-10'>
+            <div className='flex flex-col justify-center items-center gap-5 pt-10'>
                 <h1 className='text-6xl'>Deals</h1>
                 <h1 className='text-2xl'>showing deals from stores</h1>
                 <div className='flex justify-between gap-5 items-center'>
@@ -63,6 +62,16 @@ const Store = () => {
                 </div>
                 
                 <div className='border-b-[1px] border-gray-400 w-[95%]'></div>
+
+                {games.length !=0 ?
+                <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-10 w-[90%]">
+                    {games.map(game => (
+                        <GameCard game={game} />
+                    ))}
+                </div> 
+                : 
+                <h1 className='text-2xl text-white'>there are no sales in this store</h1>
+}
             </div>
         </div>
     )
