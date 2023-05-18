@@ -64,7 +64,7 @@ const Store = () => {
                 <div className='border-b-[1px] border-gray-400 w-[95%]'></div>
 
                 {games.length !=0 ?
-                <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-10 w-[90%]">
+                <div className="grid grid-rows-none xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-10 w-[90%]">
                     {games.map(game => (
                         <GameCard game={game} />
                     ))}
